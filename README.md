@@ -1,6 +1,6 @@
 <h1> WELCOME </h1>
 
-This site holds information aimed at CTF players, Red teams, Blue teams and as general reminders for those things we forget. It will be updated on a regular basis with new content as its discovered. If you like CTF's check out the mini CTF in the menu.
+This site holds information aimed at CTF players, Red teams, Blue teams and as general reminders for those things we forget. It will be updated on a regular basis with new content as its discovered. If you like CTF's check out the mini CTF.
 
 
 <h2> DISCLAIMER </h2>
