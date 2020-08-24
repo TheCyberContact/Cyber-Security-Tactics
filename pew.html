@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CST</title>
+<link rel="icon" href="icon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cyber">
+<meta name="keywords" content="Hacking, Penetration Test, Vulnerability Assessment, Cyber, CTF, CST">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #191919;
+  color: #f1f1f1;
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #202124;
+  background-image: url('bg.jpg');
+  overflow-x: hidden;
+  transition: 0s;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 1px 1px 1px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #818181;
+  display: block;
+  transition: 0s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.main {
+  margin-left: 160px; 
+  font-size: 20px; 
+  padding: 0px 10px;
+}
+
+.text.center {
+	text-align: center;
+}
+
+.bottomright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: white;
+  padding: 10px 10px;
+  font-size: 30px; 
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 12px;}
+}
+
+hr { 
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 1px solid black;
+    margin: 1em 0; 
+    padding: 0; 
+}
+
+#rcorners {
+  border-radius: 15px;
+  background: #2e2d2e;
+  padding: 10px; 
+  width: 80%;
+  height: auto; 
+  word-wrap: break-word;  
+}
+
+#divtitle {
+  height: auto;
+  width: 50%;
+}
+
+
+div.trans {
+  opacity: 0.6;
+}
+
+/*
+div {
+  border: double;
+}
+*/
+
+</style>
+</head>
+<body>
+<a name="top"></a>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html"><b>Home</a>
+  <hr>
+  <a href="nmap.html">Nmap</a>
+  <hr>
+  <a href="exploit.html">Search for exploits</a>
+  <hr>
+  <a href="brutef.html">Brute Force</a>
+  <hr>
+  <a href="hex.html">Hex and Headers</a>
+  <hr>
+  <a href="wrevshell.html">Windows Reverse Shells</a>
+  <hr>
+  <a href="lrevshell.html">Linux Reverse Shells</a>
+  <hr>
+  <a href="pel.html">Linux Penetration</a>
+  <hr>
+  <a href="pew.html">Windows Penetration</a>
+  <hr>
+  <a href="ctf.html">Mini-CTF</a>
+  <hr>
+  <a href="contact.html">Contact</b></a>
+  <hr>
+  <hr>
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
+<center><div id="divtitle">
+<img src="logox.png" height=100px></img>
+<br>
+<br>
+<br>
+</div></center>
+
+<center><div id="rcorners" class="trans">
+  <h3>WINDOWS PENETRATION</h3>
+  <img src="search.png" width=200px>
+  <p>The following are possible ways to escalate privileges on a Windows box and other bits and bobs</p>
+  <hr>
+  <h4 style="text-align: left">WinPEAS - auto check for vulnerabilities</h4>
+  <p style="text-align: left"><a href="https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/winPEAS" style="text-decoration: none; color: white">WinPEAS download from github click here</b></a></p>
+  <hr>
+  <h4 style="text-align: left">Check your kernel for known exploits</h4>
+  <p style="text-align: left">systeminfo</p>
+  <p style="text-align: left">systeminfo | findstr /B /C:"OS Name" /C:"OS Version"</p>
+  <p style="text-align: left">wmic qfe get Caption,Description,HotFixID,InstalledOn</p></p>
+  <hr> 
+  <h4 style="text-align: left">Check drivers</h4>
+  <p style="text-align: left">driverquery</p>
+  <hr>
+  <h4 style="text-align: left">Check for Anti-Virus</h4>
+  <p style="text-align: left">WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List | more </p>
+  <hr>  
+  <h4 style="text-align: left">Check users and groups</h4>
+  <p style="text-align: left">net users</p>
+  <p style="text-align: left">net localgroup</p>
+  <p style="text-align: left">whoami /all</p>
+  <p style="text-align: left">Get-WmiObject -Class Win32_UserAccount</p>
+  <hr>
+  <h4 style="text-align: left">Check clipboard (long shot maybe a password)</h4>
+  <p style="text-align: left">powershell -command "Get-Clipboard"</p>
+  <hr> 
+  <h4 style="text-align: left">Check privileges</h4>
+  <p style="text-align: left">whoami /priv </p>
+  <hr> 
+  <h4 style="text-align: left">Check ports</h4>
+  <p style="text-align: left">netstat -ano</p>
+  <hr> 
+  <h4 style="text-align: left">Check starup and if any are writeable</h4>
+  <p style="text-align: left">wmic startup</p>
+  <hr>   
+  <h4 style="text-align: left">Check processes</h4>
+  <p style="text-align: left">Tasklist /SVC</p>
+  <hr>  
+  <h4 style="text-align: left">Check services</h4>
+  <p style="text-align: left">wmic service list brief</p>
+  <hr> 
+  <h4 style="text-align: left">Check credentials</h4>
+  <p style="text-align: left">wmic service list brief</p>
+  <hr> 
+  <h4 style="text-align: left">Check Wifi and recover plain text passwords</h4>
+  <p style="text-align: left">netsh wlan show profile</p>
+  <p style="text-align: left">netsh wlan show profile PROFILE key=clear</p>
+  <hr> 
+  <h4 style="text-align: left">Check SSH credentials</h4>
+  <p style="text-align: left">reg query HKEY_CURRENT_USER\Software\OpenSSH\Agent\Keys</p>
+  <hr> 
+  <h4 style="text-align: left">Files that hold credentials</h4>
+  <p style="text-align: left">C:\Windows\sysprep\sysprep.xml</p>
+  <p style="text-align: left">C:\Windows\sysprep\sysprep.inf</p>
+  <p style="text-align: left">C:\Windows\sysprep.inf</p>
+  <p style="text-align: left">C:\Windows\Panther\Unattended.xml</p>
+  <p style="text-align: left">C:\Windows\Panther\Unattend.xml</p>
+  <p style="text-align: left">C:\Windows\Panther\Unattend\Unattend.xml</p>
+  <p style="text-align: left">C:\Windows\Panther\Unattend\Unattended.xml</p>
+  <p style="text-align: left">C:\Windows\System32\Sysprep\unattend.xml</p>
+  <p style="text-align: left">C:\Windows\System32\Sysprep\unattended.xml</p>
+  <p style="text-align: left">C:\unattend.txt</p>
+  <p style="text-align: left">C:\unattend.inf</p>
+  <p style="text-align: left">C:\Windows\repair\SAM</p>
+  <p style="text-align: left">C:\Windows\System32\config\RegBack\SAM</p>
+  <p style="text-align: left">C:\Windows\System32\config\SAM</p>
+  <p style="text-align: left">C:\Windows\repair\SYSTEM</p>
+  <p style="text-align: left">C:\Windows\System32\config\SYSTEM</p>
+  <p style="text-align: left">C:\Windows\System32\config\RegBack\SYSTEM</p>
+  <hr>
+  <h4 style="text-align: left">Cloud Credentials</h4>
+  <p style="text-align: left">.aws\credentials</p>
+  <p style="text-align: left">AppData\Roaming\gcloud\credentials.db</p>
+  <p style="text-align: left">AppData\Roaming\gcloud\legacy_credentials</p>
+  <p style="text-align: left">AppData\Roaming\gcloud\access_tokens.db</p>
+  <p style="text-align: left">.azure\accessTokens.json</p>
+  <p style="text-align: left">.azure\azureProfile.json</p> 
+  <hr>
+  <h4 style="text-align: left">Powershell search for credentials</h4>
+  <p style="text-align: left">Get-Childitem –Path C:\ -Include *unattend*,*sysprep* -File -Recurse -ErrorAction SilentlyContinue | where {($_.Name -like "*.xml" -or $_.Name -like "*.txt" -or $_.Name -like "*.ini")} </p>
+  <hr>
+  <h4 style="text-align: left">CMD.exe search for files with potential passwords</h4>
+  <p style="text-align: left">dir /s /W *pass* == *cred* == *vnc* == *.config* | findstr /i/v "\\windows"</p>
+  <hr>
+  <h4 style="text-align: left">CMD.exe search for files with potential passwords</h4>
+  <p style="text-align: left">dir /s /W *pass* == *cred* == *vnc* == *.config* | findstr /i/v "\\windows"</p>
+  <hr>
+  <h4 style="text-align: left">Search registry for possible credential locations</h4>
+  <p style="text-align: left">reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" 2>nul | findstr /i "DefaultDomainName DefaultUserName DefaultPassword AltDefaultDomainName AltDefaultUserName AltDefaultPassword LastUsedUsername"</p>
+  <p style="text-align: left">reg query "HKCU\Software\ORL\WinVNC3\Password"</p>
+  <p style="text-align: left">reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon"</p>
+  <p style="text-align: left">reg query "HKLM\SYSTEM\CurrentControlSet\Services\SNMP"</p>
+  <p style="text-align: left">reg query "HKCU\Software\TightVNC\Server"</p>
+  <p style="text-align: left">reg query "HKCU\Software\SimonTatham\PuTTY\Sessions" /s </p>
+  <p style="text-align: left">reg query "HKCU\Software\OpenSSH\Agent\Key"</p>
+  <hr>
+  <h4 style="text-align: left">Search registry for possible entries with "password"</h4>
+  <p style="text-align: left">reg query HKLM /f password /t REG_SZ /s </p>
+  <p style="text-align: left">reg query HKCU /f password /t REG_SZ /s</p>
+  <hr>
+  <h4 style="text-align: left">Check LOLBAS for binary exploits</h4>
+  <p style="text-align: left"><a href="https://lolbas-project.github.io/" style="text-decoration: none; color: #818181;">https://lolbas-project.github.io/</b></a></p><hr>   
+  <hr> 
+  
+</div></center>
+
+<a class="bottomright" href="#top" style="text-decoration: none; color: white;"><b>&#8682;</b></a>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</body>
+</html> 

