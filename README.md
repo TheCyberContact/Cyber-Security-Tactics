@@ -6,3 +6,5 @@ This site holds information aimed at CTF players, Red teams, Blue teams and as g
 <h2> DISCLAIMER </h2>
 
 Information from this site must only be used on devices or networks where you have the express consent from the owner. Any misuse or damage caused by this sites information is not the responsibility of the site owner or content creator, please use responsibly.
+
+To view the actual site please visit: https://cyber.securitytactics.com/
